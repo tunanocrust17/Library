@@ -39,7 +39,6 @@ myLibrary.push(newBook);
 
 addBookButton.addEventListener("click", (e) => {
     e.preventDefault();
-    // console.log(document.getElementById('book-title').value);
     addBookToLibrary();
     console.log(myLibrary)
     dialog.close();
