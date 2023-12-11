@@ -25,6 +25,9 @@ function Book(title, author, pages, read){
 
 const book1 = new Book('The Hobbit', 'J.R.R. Tolkien', '295 pages', "not read yet");
 myLibrary.push(book1);
+const book2 = new Book('Harry Potter', 'J.K. Rowling', '223 pages', "not read yet");
+myLibrary.push(book2);
+
 
 function addBookToLibrary(){
     let newBook = new Book (
@@ -40,6 +43,7 @@ addBookButton.addEventListener("click", (e) => {
     e.preventDefault();
     addBookToLibrary();
     console.log(myLibrary)
+    console.log(myLibrary.length);
     dialog.close();
 
     myLibrary.forEach((item)=>{
@@ -61,3 +65,5 @@ myLibrary.forEach((item) =>{
     element.appendChild(para);
     console.log(item);
 });
+
+console.log(myLibrary.length);
