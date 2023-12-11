@@ -42,19 +42,20 @@ addBookButton.addEventListener("click", (e) => {
     console.log(myLibrary)
     dialog.close();
 
+    myLibrary.forEach((item)=>{
     const para = document.createElement('p');
-    const node = document.createTextNode('Testing')
+    const node = document.createTextNode(item.title);
     para.appendChild(node);
     const element = document.querySelector('.book-container');
     element.appendChild(para);
-
+        })
     }
 
 )
 
 myLibrary.forEach((item) =>{
     const para = document.createElement('p');
-    const node = document.createTextNode('Testing')
+    const node = document.createTextNode(item.title)
     para.appendChild(node);
     const element = document.querySelector('.book-container');
     element.appendChild(para);
