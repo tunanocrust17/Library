@@ -7,7 +7,8 @@ showButton.addEventListener("click", () => {
     dialog.showModal();
   });
 
-  cancelButton.addEventListener("click", () => {
+  cancelButton.addEventListener("click", (e) => {
+    e.preventDefault();
     dialog.close();
   })
 
@@ -27,6 +28,16 @@ const book1 = new Book('The Hobbit', 'J.R.R. Tolkien', '295 pages', "not read ye
 myLibrary.push(book1);
 const book2 = new Book('Harry Potter', 'J.K. Rowling', '223 pages', "not read yet");
 myLibrary.push(book2);
+
+
+myLibrary.forEach((item) =>{
+    const para = document.createElement('p');
+    const node = document.createTextNode(item.title)
+    para.appendChild(node);
+    const element = document.querySelector('.book-container');
+    element.appendChild(para);
+    console.log(item);
+});
 
 
 function addBookToLibrary(){
@@ -57,13 +68,5 @@ addBookButton.addEventListener("click", (e) => {
 
 )
 
-myLibrary.forEach((item) =>{
-    const para = document.createElement('p');
-    const node = document.createTextNode(item.title)
-    para.appendChild(node);
-    const element = document.querySelector('.book-container');
-    element.appendChild(para);
-    console.log(item);
-});
 
 console.log(myLibrary.length);
