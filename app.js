@@ -54,19 +54,15 @@ addBookButton.addEventListener("click", (e) => {
     e.preventDefault();
     addBookToLibrary();
     console.log(myLibrary)
-    console.log(myLibrary.length);
+    var libraryLength = myLibrary.length-1;
     dialog.close();
 
-    myLibrary.forEach((item)=>{
+    const newDiv = document.createElement('div');
+    newDiv.classList.add('book-card');
     const para = document.createElement('p');
-    const node = document.createTextNode(item.title);
+    newDiv.appendChild(para);
+    const node = document.createTextNode(myLibrary[libraryLength].title)
     para.appendChild(node);
     const element = document.querySelector('.book-container');
-    element.appendChild(para);
-        })
-    }
-
-)
-
-
-console.log(myLibrary.length);
+    element.appendChild(newDiv);
+      })
