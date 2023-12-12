@@ -31,11 +31,18 @@ myLibrary.push(book2);
 
 
 myLibrary.forEach((item) =>{
-    const para = document.createElement('p');
-    const node = document.createTextNode(item.title)
-    para.appendChild(node);
+    const newDiv = document.createElement('div');
+    newDiv.classList.add('book-card');
+    const paraTitle = document.createElement('p');
+    const paraAuthor = document.createElement('p');
+    newDiv.appendChild(paraTitle);
+    newDiv.appendChild(paraAuthor);
+    const nodeTitle = document.createTextNode("Title: " + item.title)
+    paraTitle.appendChild(nodeTitle);
+    const nodeAuthor = document.createTextNode("Author:" + item.author);
+    paraAuthor.appendChild(nodeAuthor);
     const element = document.querySelector('.book-container');
-    element.appendChild(para);
+    element.appendChild(newDiv);
     console.log(item);
 });
 
@@ -59,10 +66,16 @@ addBookButton.addEventListener("click", (e) => {
 
     const newDiv = document.createElement('div');
     newDiv.classList.add('book-card');
-    const para = document.createElement('p');
-    newDiv.appendChild(para);
-    const node = document.createTextNode(myLibrary[libraryLength].title)
-    para.appendChild(node);
+    const paraTitle = document.createElement('p');
+    const paraAuthor = document.createElement('p');
+    newDiv.appendChild(paraTitle);
+    newDiv.appendChild(paraAuthor);
+    const nodeTitle = document.createTextNode("Title: " + myLibrary[libraryLength].title)
+    paraTitle.appendChild(nodeTitle);
+    const nodeAuthor = document.createTextNode("Author:" + myLibrary[libraryLength].author);
+    paraAuthor.appendChild(nodeAuthor);
     const element = document.querySelector('.book-container');
     element.appendChild(newDiv);
       })
+
+      
