@@ -41,6 +41,9 @@ myLibrary.forEach((item) =>{
     paraTitle.appendChild(nodeTitle);
     const nodeAuthor = document.createTextNode("Author:" + item.author);
     paraAuthor.appendChild(nodeAuthor);
+    const deleteButton = document.createElement('button')
+    deleteButton.textContent = "Delete";
+    newDiv.appendChild(deleteButton);
     const element = document.querySelector('.book-container');
     element.appendChild(newDiv);
     console.log(item);
@@ -74,6 +77,9 @@ addBookButton.addEventListener("click", (e) => {
     paraTitle.appendChild(nodeTitle);
     const nodeAuthor = document.createTextNode("Author:" + myLibrary[libraryLength].author);
     paraAuthor.appendChild(nodeAuthor);
+    const deleteButton = document.createElement('button')
+    deleteButton.textContent = "Delete";
+    newDiv.appendChild(deleteButton);
     const element = document.querySelector('.book-container');
     element.appendChild(newDiv);
       })
