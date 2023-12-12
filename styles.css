@@ -14,3 +14,18 @@ body {
     border: 3px solid #FFA559;
     border-radius: 5px;
 }
+
+.remove-button {
+    border: none;
+    background-color: #FFE6C7;
+}
+
+.remove-button img{
+    height: 30px;
+    width: 30px;
+    filter: invert(45%) sepia(55%) saturate(3079%) hue-rotate(188deg) brightness(94%) contrast(90%); */
+}
+
+.remove-button img:hover{
+    filter: invert(45%) sepia(90%) saturate(3079%) hue-rotate(125deg) brightness(94%) contrast(90%); */
+}
