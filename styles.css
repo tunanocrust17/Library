@@ -1,0 +1,16 @@
+body {
+    background-color: #454545;
+}
+
+.book-container{
+    display: flex;
+    gap: 15px;
+}
+
+.book-card {
+    background-color: #FFE6C7;
+    height: 200px;
+    width: 200px;
+    border: 3px solid #FFA559;
+    border-radius: 5px;
+}
