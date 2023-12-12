@@ -2,6 +2,21 @@ body {
     background-color: #454545;
 }
 
+header {
+    font-size: 32px;
+    color: #FF6000;
+    padding: 25px 50px;
+}
+
+.sidebar{
+    padding-left: 50px;
+}
+
+.main-container {
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+}
+
 .book-container{
     display: flex;
     gap: 15px;
