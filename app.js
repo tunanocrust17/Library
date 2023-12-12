@@ -42,7 +42,7 @@ myLibrary.forEach((item) =>{
     const nodeAuthor = document.createTextNode("Author:" + item.author);
     paraAuthor.appendChild(nodeAuthor);
     const deleteButton = document.createElement('button')
-    deleteButton.innerHTML= '<img src="images/home.svg"/>';
+    deleteButton.innerHTML= '<img src="images/trash-can-outline.svg"/>';
     deleteButton.classList.add('remove-button');
     newDiv.appendChild(deleteButton);
     const element = document.querySelector('.book-container');
@@ -79,7 +79,7 @@ addBookButton.addEventListener("click", (e) => {
     const nodeAuthor = document.createTextNode("Author:" + myLibrary[libraryLength].author);
     paraAuthor.appendChild(nodeAuthor);
     const deleteButton = document.createElement('button')
-    deleteButton.textContent = "Delete";
+    deleteButton.innerHTML= '<img src="images/trash-can-outline.svg"/>';
     deleteButton.classList.add('remove-button');
     newDiv.appendChild(deleteButton);
     const element = document.querySelector('.book-container');
