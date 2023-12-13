@@ -1,19 +1,37 @@
 body {
     margin: 0;
     background-color: #c5c5c5;
+    
+}
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr 5fr;
+    grid-template-rows: 1fr 4fr;
+    min-height: 100vh;
 }
 
 header {
+    grid-column: 1 / 3;
+    grid-row: 1 / 2;
+
     font-size: 50px;
     color: #FF6000;
     padding: 25px 50px;
     background-color: #454545;
-    margin-bottom: 20px;
     box-shadow: 0px 8px 6px rgb(138, 138, 138);
 }
 
 .sidebar{
-    padding: 0 50px;
+    color: #FF6000;
+    background-color: #454545;
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+    padding: 25px 50px 0 50px;
+
+    display: flex;
+    flex-direction: column;
+    background-size: cover;
 }
 
 .open-dialog {
@@ -25,12 +43,8 @@ header {
     font-size: 20px;
 }
 
-.main-container {
-    display: grid;
-    grid-template-columns: 1fr 5fr;
-}
-
 .book-container{
+    padding: 25px 0 0 30px;
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
