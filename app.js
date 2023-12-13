@@ -26,30 +26,40 @@ function Book(id, title, author, pages, read){
     };
 }
 
-const book1 = new Book(Math.floor(Date.now()*Math.random()), 'The Hobbit', 'J.R.R. Tolkien', '295 pages', "not read yet");
+const book1 = new Book(Math.floor(Date.now()*Math.random()).toString(), 'The Hobbit', 'J.R.R. Tolkien', '295 pages', "not read yet");
 myLibrary.push(book1);
-const book2 = new Book(Math.floor(Date.now()*Math.random()), 'Harry Potter', 'J.K. Rowling', '223 pages', "not read yet");
+const book2 = new Book(Math.floor(Date.now()*Math.random()).toString(), 'Harry Potter', 'J.K. Rowling', '223 pages', "not read yet");
 myLibrary.push(book2);
 
 
 myLibrary.forEach((item) =>{
+    const element = document.querySelector('.book-container');
     const newDiv = document.createElement('div');
-    newDiv.classList.add('book-card');
     const paraTitle = document.createElement('p');
     const paraAuthor = document.createElement('p');
+    const nodeTitle = document.createTextNode("Title: " + item.title)
+    const nodeAuthor = document.createTextNode("Author:" + item.author);
+    const deleteButton = document.createElement('button')
+    
+    newDiv.classList.add('book-card');
     newDiv.appendChild(paraTitle);
     newDiv.appendChild(paraAuthor);
-    const nodeTitle = document.createTextNode("Title: " + item.title)
     paraTitle.appendChild(nodeTitle);
-    const nodeAuthor = document.createTextNode("Author:" + item.author);
-    paraAuthor.appendChild(nodeAuthor);
-    const deleteButton = document.createElement('button')
-    deleteButton.innerHTML= '<img src="images/trash-can-outline.svg"/>';
+    paraAuthor.appendChild(nodeAuthor);deleteButton.innerHTML= '<img src="images/trash-can-outline.svg" del-date="'+ item.id +'"/>';
     deleteButton.classList.add('remove-button');
     newDiv.appendChild(deleteButton);
-    const element = document.querySelector('.book-container');
     element.appendChild(newDiv);
-    console.log(item);
+
+    deleteButton.addEventListener('click',(e)=>{
+      element.removeChild(newDiv);
+      
+        var delDate = e.target.getAttribute('del-date');
+        console.log(delDate);
+        let index = myLibrary.map((item) => item.id).indexOf(delDate);
+        myLibrary.splice(index,1);
+        console.log(index);
+        console.log(myLibrary)
+      })
 });
 
 
@@ -95,8 +105,6 @@ myLibrary.push(newBook);
         console.log(index);
         console.log(myLibrary)
       })
-
-
     }
 
 
