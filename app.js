@@ -2,6 +2,7 @@ const dialog = document.querySelector('dialog');
 const showButton = document.querySelector('.open-dialog');
 const cancelButton = document.querySelector('.cancel-btn');
 const addBookButton = document.querySelector('.add-book-btn');
+const removeButton = document.querySelector('.remove-button');
 
 showButton.addEventListener("click", () => {
     dialog.showModal();
@@ -14,7 +15,8 @@ showButton.addEventListener("click", () => {
 
 const myLibrary = [];
 
-function Book(title, author, pages, read){
+function Book(id, title, author, pages, read){
+    this.id = id;
     this.title = title;
     this.author = author;
     this.pages = pages;
@@ -24,9 +26,9 @@ function Book(title, author, pages, read){
     };
 }
 
-const book1 = new Book('The Hobbit', 'J.R.R. Tolkien', '295 pages', "not read yet");
+const book1 = new Book(Math.floor(Date.now()*Math.random()), 'The Hobbit', 'J.R.R. Tolkien', '295 pages', "not read yet");
 myLibrary.push(book1);
-const book2 = new Book('Harry Potter', 'J.K. Rowling', '223 pages', "not read yet");
+const book2 = new Book(Math.floor(Date.now()*Math.random()), 'Harry Potter', 'J.K. Rowling', '223 pages', "not read yet");
 myLibrary.push(book2);
 
 
@@ -52,12 +54,49 @@ myLibrary.forEach((item) =>{
 
 
 function addBookToLibrary(){
+
+    let newID = Math.floor(Date.now()*Math.random()).toString();
+
     let newBook = new Book (
+        newID,
         document.getElementById('book-title').value,
         document.getElementById('book-author').value,
         document.getElementById('book-pages').value,
         document.getElementById('book-read').value);
 myLibrary.push(newBook);
+
+    var libraryLength = myLibrary.length-1;
+
+    const element = document.querySelector('.book-container');
+    const newDiv = document.createElement('div');
+    const paraTitle = document.createElement('p');
+    const paraAuthor = document.createElement('p');
+    const nodeTitle = document.createTextNode("Title: " + myLibrary[libraryLength].title)
+    const nodeAuthor = document.createTextNode("Author:" + myLibrary[libraryLength].author);
+    const deleteButton = document.createElement('button')
+
+    
+    newDiv.classList.add('book-card');
+    newDiv.appendChild(paraTitle);
+    newDiv.appendChild(paraAuthor);
+    paraTitle.appendChild(nodeTitle);
+    paraAuthor.appendChild(nodeAuthor);deleteButton.innerHTML= '<img src="images/trash-can-outline.svg" del-date="'+ newID +'"/>';
+    deleteButton.classList.add('remove-button');
+    newDiv.appendChild(deleteButton);
+    element.appendChild(newDiv);
+
+    deleteButton.addEventListener('click',(e)=>{
+      element.removeChild(newDiv);
+      
+        var delDate = e.target.getAttribute('del-date');
+        console.log(delDate);
+        let index = myLibrary.map((item) => item.id).indexOf(delDate);
+        myLibrary.splice(index,1);
+        console.log(index);
+        console.log(myLibrary)
+      })
+
+
     }
 
 
@@ -65,25 +104,5 @@ addBookButton.addEventListener("click", (e) => {
     e.preventDefault();
     addBookToLibrary();
     console.log(myLibrary)
-    var libraryLength = myLibrary.length-1;
     dialog.close();
-
-    const newDiv = document.createElement('div');
-    newDiv.classList.add('book-card');
-    const paraTitle = document.createElement('p');
-    const paraAuthor = document.createElement('p');
-    newDiv.appendChild(paraTitle);
-    newDiv.appendChild(paraAuthor);
-    const nodeTitle = document.createTextNode("Title: " + myLibrary[libraryLength].title)
-    paraTitle.appendChild(nodeTitle);
-    const nodeAuthor = document.createTextNode("Author:" + myLibrary[libraryLength].author);
-    paraAuthor.appendChild(nodeAuthor);
-    const deleteButton = document.createElement('button')
-    deleteButton.innerHTML= '<img src="images/trash-can-outline.svg"/>';
-    deleteButton.classList.add('remove-button');
-    newDiv.appendChild(deleteButton);
-    const element = document.querySelector('.book-container');
-    element.appendChild(newDiv);
       })
-
-      
