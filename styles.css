@@ -1,26 +1,39 @@
 body {
-    background-color: #454545;
+    margin: 0;
+    background-color: #c5c5c5;
 }
 
 header {
-    font-size: 32px;
+    font-size: 50px;
     color: #FF6000;
     padding: 25px 50px;
+    background-color: #454545;
+    margin-bottom: 20px;
+    box-shadow: 0px 8px 6px rgb(138, 138, 138);
 }
 
 .sidebar{
-    padding-left: 50px;
+    padding: 0 50px;
+}
+
+.open-dialog {
+    border: 3px solid #FFA559;
+    border-radius: 5px;
+    padding: 15px 40px;
+    color: #454545;
+    background-color: #FFE6C7;
+    font-size: 20px;
 }
 
 .main-container {
     display: grid;
-    grid-template-columns: 1fr 4fr;
+    grid-template-columns: 1fr 5fr;
 }
 
 .book-container{
     display: flex;
     flex-wrap: wrap;
-    gap: 15px;
+    gap: 20px;
 }
 
 .book-card {
@@ -29,6 +42,7 @@ header {
     width: 200px;
     border: 3px solid #FFA559;
     border-radius: 5px;
+    box-shadow: 5px 8px 6px rgb(223, 125, 14);
 }
 
 .remove-button {
