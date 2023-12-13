@@ -26,9 +26,9 @@ function Book(id, title, author, pages, read){
     };
 }
 
-const book1 = new Book(Math.floor(Date.now()*Math.random()).toString(), 'The Hobbit', 'J.R.R. Tolkien', '295 pages', "not read yet");
+const book1 = new Book(Math.floor(Date.now()*Math.random()).toString(), 'The Hobbit', 'J.R.R. Tolkien', '295 pages', "Read");
 myLibrary.push(book1);
-const book2 = new Book(Math.floor(Date.now()*Math.random()).toString(), 'Harry Potter', 'J.K. Rowling', '223 pages', "not read yet");
+const book2 = new Book(Math.floor(Date.now()*Math.random()).toString(), 'Harry Potter', 'J.K. Rowling', '223 pages', "Read");
 myLibrary.push(book2);
 
 
