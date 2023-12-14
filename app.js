@@ -28,7 +28,7 @@ function Book(id, title, author, pages, read){
 
 const book1 = new Book(Math.floor(Date.now()*Math.random()).toString(), 'The Hobbit', 'J.R.R. Tolkien', '295 pages', "Read");
 myLibrary.push(book1);
-const book2 = new Book(Math.floor(Date.now()*Math.random()).toString(), 'Harry Potter', 'J.K. Rowling', '223 pages', "Read");
+const book2 = new Book(Math.floor(Date.now()*Math.random()).toString(), 'Harry Potter', 'J.K. Rowling', '223 pages', "Unread");
 myLibrary.push(book2);
 
 
@@ -40,14 +40,18 @@ myLibrary.forEach((item) =>{
     const nodeTitle = document.createTextNode("Title: " + item.title)
     const nodeAuthor = document.createTextNode("Author:" + item.author);
     const deleteButton = document.createElement('button')
+    const readButton = document.createElement('button');
     
     newDiv.classList.add('book-card');
     newDiv.appendChild(paraTitle);
     newDiv.appendChild(paraAuthor);
     paraTitle.appendChild(nodeTitle);
-    paraAuthor.appendChild(nodeAuthor);deleteButton.innerHTML= '<img src="images/trash-can-outline.svg" del-date="'+ item.id +'"/>';
+    paraAuthor.appendChild(nodeAuthor);
+    deleteButton.innerHTML= '<img src="images/trash-can-outline.svg" del-date="'+ item.id +'"/>';
     deleteButton.classList.add('remove-button');
     newDiv.appendChild(deleteButton);
+    readButton.innerHTML="Read";
+    newDiv.appendChild(readButton);
     element.appendChild(newDiv);
 
     deleteButton.addEventListener('click',(e)=>{
@@ -60,6 +64,24 @@ myLibrary.forEach((item) =>{
         console.log(index);
         console.log(myLibrary)
       })
+
+    readButton.addEventListener('click', () =>{
+      if(item.read === "Unread"){
+        item.read = "Read";
+        readButton.innerHTML = "Unread";
+        console.log(myLibrary);
+      } else if(item.read === "Read"){
+        item.read = "Unread";
+        readButton.innerHTML = "Read";
+        console.log(myLibrary);
+      }
+    })
+
+    if(item.read === "Unread"){
+      readButton.innerHTML = "Read"
+    } else{
+      readButton.innerHTML = "Unread"
+    };
 });
 
 
@@ -84,15 +106,19 @@ myLibrary.push(newBook);
     const nodeTitle = document.createTextNode("Title: " + myLibrary[libraryLength].title)
     const nodeAuthor = document.createTextNode("Author:" + myLibrary[libraryLength].author);
     const deleteButton = document.createElement('button')
+    const readButton = document.createElement('button');
 
     
     newDiv.classList.add('book-card');
     newDiv.appendChild(paraTitle);
     newDiv.appendChild(paraAuthor);
     paraTitle.appendChild(nodeTitle);
-    paraAuthor.appendChild(nodeAuthor);deleteButton.innerHTML= '<img src="images/trash-can-outline.svg" del-date="'+ newID +'"/>';
+    paraAuthor.appendChild(nodeAuthor);
+    deleteButton.innerHTML= '<img src="images/trash-can-outline.svg" del-date="'+ newID +'"/>';
     deleteButton.classList.add('remove-button');
     newDiv.appendChild(deleteButton);
+    readButton.innerHTML="Read";
+    newDiv.appendChild(readButton);
     element.appendChild(newDiv);
 
     deleteButton.addEventListener('click',(e)=>{
