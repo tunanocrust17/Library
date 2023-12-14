@@ -117,7 +117,8 @@ myLibrary.push(newBook);
     deleteButton.innerHTML= '<img src="images/trash-can-outline.svg" del-date="'+ newID +'"/>';
     deleteButton.classList.add('remove-button');
     newDiv.appendChild(deleteButton);
-    readButton.innerHTML="Read";
+    readButton.innerHTML= "Read";
+    readButton.setAttribute("del-date", newID);
     newDiv.appendChild(readButton);
     element.appendChild(newDiv);
 
@@ -131,6 +132,32 @@ myLibrary.push(newBook);
         console.log(index);
         console.log(myLibrary)
       })
+
+      readButton.addEventListener('click', (e) =>{
+        var delDate = e.target.getAttribute('del-date');
+        console.log(delDate);
+        let index = myLibrary.map((item) => item.id).indexOf(delDate);
+        console.log(index);
+        if(myLibrary[index].read === "Unread"){
+          myLibrary[index].read = "Read";
+          readButton.innerHTML = "Unread";
+          console.log(myLibrary);
+        } else if(myLibrary[index].read === "Read"){
+          myLibrary[index].read = "Unread";
+          readButton.innerHTML = "Read";
+          console.log(myLibrary);
+        }
+      })
+  
+      function updateReadStatus(){
+        if(myLibrary[libraryLength].read === "Unread"){
+          readButton.innerHTML = "Read"
+        } else {
+          readButton.innerHTML = "Unread"
+        }
+      }
+
+      updateReadStatus();
     }
 
 
